@@ -56,15 +56,47 @@
 		1C3776BA2636B3A70096545B /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
-				1C3776BB2636B3A70096545B /* AppDelegate.swift */,
-				1C3776BD2636B3A70096545B /* SceneDelegate.swift */,
+				1C3776D52636B4BC0096545B /* Supporting Files */,
+				1C3776D42636B4B70096545B /* Resources */,
+				1C3776D32636B4B10096545B /* Sources */,
+			);
+			path = ChatApp;
+			sourceTree = "<group>";
+		};
+		1C3776D22636B4AB0096545B /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				1C3776BF2636B3A70096545B /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1C3776D32636B4B10096545B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1C3776BD2636B3A70096545B /* SceneDelegate.swift */,
+				1C3776BB2636B3A70096545B /* AppDelegate.swift */,
+				1C3776D22636B4AB0096545B /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1C3776D42636B4B70096545B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				1C3776C12636B3A70096545B /* Main.storyboard */,
 				1C3776C42636B3A80096545B /* Assets.xcassets */,
 				1C3776C62636B3A80096545B /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1C3776D52636B4BC0096545B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				1C3776C92636B3A80096545B /* Info.plist */,
 			);
-			path = ChatApp;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +320,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
-				INFOPLIST_FILE = ChatApp/Info.plist;
+				INFOPLIST_FILE = "ChatApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,7 +339,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5LZNHGFB8C;
-				INFOPLIST_FILE = ChatApp/Info.plist;
+				INFOPLIST_FILE = "ChatApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
