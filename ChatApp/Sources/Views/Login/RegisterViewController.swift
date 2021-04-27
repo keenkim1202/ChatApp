@@ -201,13 +201,15 @@ class RegisterViewController: UIViewController {
     
     // Firebase Log In
     FirebaseAuth.Auth.auth().createUser(withEmail: email,
-                                        password: password) { (result, error) in
+                                        password: password) { [weak self](result, error) in
+      guard let strongSelf = self else { return }
       guard let result = result, error == nil else {
         print("계정 생성 시 에러가 발생.")
         return
       }
       let user = result.user
       print("생성된 계정: \(user )")
+      strongSelf.navigationController?.dismiss(animated: true, completion: nil)
     }
   }
   
