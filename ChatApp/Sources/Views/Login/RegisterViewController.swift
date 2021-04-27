@@ -79,9 +79,12 @@ class RegisterViewController: UIViewController {
   
   private let imageView: UIImageView = {
     let v = UIImageView()
-    v.image = UIImage(systemName: "person.crop.circle.fill.badge.plus")
+    v.image = UIImage(systemName: "person.crop.circle.fill")
     v.tintColor = .gray
     v.contentMode = .scaleAspectFit
+    v.layer.masksToBounds = true
+    v.layer.borderWidth = 2
+    v.layer.borderColor = UIColor.systemGreen.cgColor
     return v
   }()
   
@@ -137,7 +140,7 @@ class RegisterViewController: UIViewController {
   }
   
   @objc private func didTapChangeProfilePic() {
-    print("사진 변경이 불려짐.")
+    presentPhotoActionSheet()
   }
   
   override func viewDidLayoutSubviews() {
@@ -150,6 +153,7 @@ class RegisterViewController: UIViewController {
                              y: 40,
                              width: size,
                              height: size)
+    imageView.layer.cornerRadius = imageView.width / 2
     imageLabel.frame = CGRect(x: centerX - (imageLabel.width / 2),
                               y: imageView.bottom,
                               width: imageLabel.width,
@@ -219,5 +223,58 @@ extension RegisterViewController: UITextFieldDelegate {
       registerButtonTapped()
     }
     return true
+  }
+}
+
+// MARK: UIImagePickerControllerDelegate & UINavigationControllerDelegate
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  func presentPhotoActionSheet() {
+    let actionSheet = UIAlertController(title: "프로필 편집",
+                                        message: "프로필을 추가하시겠습니까?",
+                                        preferredStyle: .actionSheet)
+    actionSheet.addAction(UIAlertAction(title: "취소",
+                                        style: .cancel,
+                                        handler: nil))
+    actionSheet.addAction(UIAlertAction(title: "카메라",
+                                        style: .default,
+                                        handler: { [weak self] _ in
+                                          self?.presentCamera()
+                                        }))
+    actionSheet.addAction(UIAlertAction(title: "사진첩",
+                                        style: .default,
+                                        handler: { [weak self] _ in
+                                          self?.presentPhotoPicker()
+                                        }))
+    present(actionSheet, animated: true)
+  }
+  
+  func presentCamera() {
+    let vc = UIImagePickerController()
+    vc.sourceType = .camera
+    vc.delegate = self
+    vc.allowsEditing = true
+    present(vc, animated: true)
+  }
+  
+  func presentPhotoPicker() {
+    let vc = UIImagePickerController()
+    vc.sourceType = .photoLibrary
+    vc.delegate = self
+    vc.allowsEditing = true
+    present(vc, animated: true)
+  }
+  
+  func imagePickerController(
+    _ picker: UIImagePickerController,
+    didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    picker.dismiss(animated: true, completion: nil)
+    guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+      return
+    }
+    self.imageView.image = selectedImage
+  }
+  func imagePickerControllerDidCancel(
+    _ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
   }
 }
