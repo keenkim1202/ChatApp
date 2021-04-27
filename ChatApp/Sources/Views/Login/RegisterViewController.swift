@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
   // MARK: Properties
@@ -178,7 +179,6 @@ class RegisterViewController: UIViewController {
                                y: passwordField.bottom + 10,
                                width: scrollView.width - 60,
                                height: 52)
-    
   }
   
   @objc private func registerButtonTapped() {
@@ -198,7 +198,17 @@ class RegisterViewController: UIViewController {
       alertUserLoginError()
       return
     }
+    
     // Firebase Log In
+    FirebaseAuth.Auth.auth().createUser(withEmail: email,
+                                        password: password) { (result, error) in
+      guard let result = result, error == nil else {
+        print("계정 생성 시 에러가 발생.")
+        return
+      }
+      let user = result.user
+      print("생성된 계정: \(user )")
+    }
   }
   
   func alertUserLoginError() {
