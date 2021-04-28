@@ -22,6 +22,7 @@
 		1C3776F32636BC810096545B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3776F22636BC810096545B /* LoginViewController.swift */; };
 		1C3776F72636BD4A0096545B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3776F62636BD4A0096545B /* Extensions.swift */; };
 		1C5710A52638064100CA9A24 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C5710A42638064100CA9A24 /* GoogleService-Info.plist */; };
+		1C5710B82638123700CA9A24 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5710B72638123700CA9A24 /* DatabaseManager.swift */; };
 		C8AADE1A582B78F398051649 /* Pods_ChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD61A4E68E41B3561C616F /* Pods_ChatApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		1C3776F22636BC810096545B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../../../../../LoginViewController.swift; sourceTree = "<group>"; };
 		1C3776F62636BD4A0096545B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1C5710A42638064100CA9A24 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1C5710B72638123700CA9A24 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		4FBD61A4E68E41B3561C616F /* Pods_ChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A025AB98C37EEC17474BC3F /* Pods-ChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.debug.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CDF4285140E29B2917A70C0D /* Pods-ChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChatApp.release.xcconfig"; path = "Target Support Files/Pods-ChatApp/Pods-ChatApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				1C3776C12636B3A70096545B /* Main.storyboard */,
 				1C3776C42636B3A80096545B /* Assets.xcassets */,
 				1C3776C62636B3A80096545B /* LaunchScreen.storyboard */,
+				1C5710B72638123700CA9A24 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				1C3776BC2636B3A70096545B /* AppDelegate.swift in Sources */,
 				1C3776ED2636B7D20096545B /* ProfileViewController.swift in Sources */,
 				1C3776BE2636B3A70096545B /* SceneDelegate.swift in Sources */,
+				1C5710B82638123700CA9A24 /* DatabaseManager.swift in Sources */,
 				1C3776F32636BC810096545B /* LoginViewController.swift in Sources */,
 				1C3776F72636BD4A0096545B /* Extensions.swift in Sources */,
 				1C3776E42636B79F0096545B /* PhotoViewerViewController.swift in Sources */,
