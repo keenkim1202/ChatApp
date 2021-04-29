@@ -201,20 +201,21 @@ class RegisterViewController: UIViewController {
     
     // Firebase Log In
     DatabaseManager.shared.userExists(with: email) { [weak self] (exists) in
+      guard let strongSelf = self else { return }
       guard !exists else {
-        guard let strongSelf = self else { return }
         // user alreadt exists
         strongSelf.alertUserLoginError(message: "이미 계정이 존재하는 이메일입니다.")
         return
       }
-      FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion:  { [weak self](result, error) in
-        guard let strongSelf = self else { return }
+      FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion:  { (result, error) in
         guard result == result, error == nil else {
           print("계정 생성 시 에러가 발생.")
           return
         }
         
-        DatabaseManager.shared.insertUser(with: User(firstName: firstName, lastName: lastName, emailAddress: email))
+        DatabaseManager.shared.insertUser(with: User(firstName: firstName,
+                                                     lastName: lastName,
+                                                     emailAddress: email))
 
         strongSelf.navigationController?.dismiss(animated: true, completion: nil)
       })
