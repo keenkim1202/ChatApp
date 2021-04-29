@@ -82,6 +82,7 @@ class RegisterViewController: UIViewController {
     let v = UIImageView()
     v.image = UIImage(systemName: "person.crop.circle.fill")
     v.tintColor = .gray
+    v.backgroundColor = .white
     v.contentMode = .scaleAspectFit
     v.layer.masksToBounds = true
     v.layer.borderWidth = 2
@@ -162,19 +163,19 @@ class RegisterViewController: UIViewController {
     firstNameField.frame = CGRect(x: 30,
                               y: imageLabel.bottom + 15,
                               width: scrollView.width - 60,
-                              height: 52)
+                              height: 40)
     lastNameField.frame = CGRect(x: 30,
                               y: firstNameField.bottom + 10,
                               width: scrollView.width - 60,
-                              height: 52)
+                              height: 40)
     emailField.frame = CGRect(x: 30,
                               y: lastNameField.bottom + 10,
                               width: scrollView.width - 60,
-                              height: 52)
+                              height: 40)
     passwordField.frame = CGRect(x: 30,
                                  y: emailField.bottom + 10,
                                  width: scrollView.width - 60,
-                                 height: 52)
+                                 height: 40)
     registerButton.frame = CGRect(x: 30,
                                y: passwordField.bottom + 10,
                                width: scrollView.width - 60,

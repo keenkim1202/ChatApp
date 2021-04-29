@@ -7,13 +7,13 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class ConversationsViewController: UIViewController {
 
   // MARK: View Life-Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .red
   }
   
   override func viewDidAppear(_ animated: Bool) {
