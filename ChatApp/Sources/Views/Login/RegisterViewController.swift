@@ -82,6 +82,7 @@ class RegisterViewController: UIViewController {
     let v = UIImageView()
     v.image = UIImage(systemName: "person.crop.circle.fill")
     v.tintColor = .gray
+    v.backgroundColor = .white
     v.contentMode = .scaleAspectFit
     v.layer.masksToBounds = true
     v.layer.borderWidth = 2
