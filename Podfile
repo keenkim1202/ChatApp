@@ -12,7 +12,10 @@ target 'ChatApp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
 
-  # Facebook
+  # Facebook Sign In
   pod 'FBSDKLoginKit'
-  
+
+  # Google Sign In
+  pod 'GoogleSignIn' 
+ 
 end
