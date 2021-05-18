@@ -73,28 +73,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                                      emailAddress: email))
       }
     }
-    
+
     // treat accessToken
     guard let authentication = user.authentication else {
       print("Missing auth object off of google user.")
       return
     }
-    let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+    let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                   accessToken: authentication.accessToken)
     
     FirebaseAuth.Auth.auth().signIn(with: credential) { authResult, error in
-      guard authResult != nil, error != nil else {
+      guard authResult != nil, error == nil else {
         print("Failed to log in with google credential.")
         return
       }
       print("Successfully signed in with Google credential.")
+      NotificationCenter.default.post(name: .didLogInNotification, object: nil)
     }
   }
   
   func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
     print("Google user was disconnected.")
   }
-  
-  
   
   func application(
     _ application: UIApplication,
