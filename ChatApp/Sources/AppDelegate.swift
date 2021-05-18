@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                                      emailAddress: email))
       }
     }
-    
+
     // treat accessToken
     guard let authentication = user.authentication else {
       print("Missing auth object off of google user.")
