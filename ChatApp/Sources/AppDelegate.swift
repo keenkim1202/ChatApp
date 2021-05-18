@@ -35,14 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     open url: URL,
     options: [UIApplication.OpenURLOptionsKey : Any] = [:]
   ) -> Bool {
-    // facebook sign in
+    // MARK: Facebook sign in
     ApplicationDelegate.shared.application(
       app,
       open: url,
       sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
       annotation: options[UIApplication.OpenURLOptionsKey.annotation]
     )
-    // google sign in
+    // MARK: Google sign in
     return GIDSignIn.sharedInstance().handle(url)
   }
   
@@ -55,9 +55,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       return
     }
     
+    guard let user = user else { return }
+    print("Did sign in with Google: \(user)")
+    
+    // check database if this email is exits.
+    guard let email = user.profile.email,
+          let firstName = user.profile.givenName,
+          let lastName = user.profile.familyName else {
+      return
+    }
+    
+    DatabaseManager.shared.userExists(with: email) { exists in
+      if !exists {
+        // insert to databsae
+        DatabaseManager.shared.insertUser(with: User(firstName: firstName,
+                                                     lastName: lastName,
+                                                     emailAddress: email))
+      }
+    }
+    
     // treat accessToken
-    guard let authentication = user.authentication else { return }
+    guard let authentication = user.authentication else {
+      print("Missing auth object off of google user.")
+      return
+    }
     let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+    
+    FirebaseAuth.Auth.auth().signIn(with: credential) { authResult, error in
+      guard authResult != nil, error != nil else {
+        print("Failed to log in with google credential.")
+        return
+      }
+      print("Successfully signed in with Google credential.")
+    }
   }
   
   func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
