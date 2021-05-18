@@ -113,7 +113,6 @@
 				1C3776BB2636B3A70096545B /* AppDelegate.swift */,
 				1C3776DA2636B6520096545B /* Models */,
 				1C3776D22636B4AB0096545B /* Views */,
-				1C3776F62636BD4A0096545B /* Extensions.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -125,6 +124,7 @@
 				1C3776C42636B3A80096545B /* Assets.xcassets */,
 				1C3776C62636B3A80096545B /* LaunchScreen.storyboard */,
 				1C5710B72638123700CA9A24 /* DatabaseManager.swift */,
+				1C3776F62636BD4A0096545B /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
